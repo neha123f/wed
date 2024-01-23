@@ -29,6 +29,6 @@ jobs:
 
       - name: Run Angular tests and generate HTML report
         run: |
-          ng test --watch=false --browsers=ChromeHeadless --reporters=progress,html --code-coverage
+          ng test --watch=false --browsers=ChromeHeadless --reporters=progress,html 
           mkdir -p $GITHUB_WORKSPACE/test-results
           mv coverage/index.html $GITHUB_WORKSPACE/test-results/test-report.html >> $GITHUB_OUTPUT
