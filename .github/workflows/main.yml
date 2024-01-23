@@ -27,4 +27,6 @@ jobs:
            ng add @angular-eslint/schematics --skip-confirmation
            ng lint  
       - name: test
-        run: ng test --browsers=browsers
+        run: |
+          npm install karma-chrome-launcher --save-dev
+          ng test 
