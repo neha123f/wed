@@ -1,0 +1,34 @@
+name: Angular CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install dependencies and Angular CLI
+        run: |
+          npm install
+          npm install -g @angular/cli
+
+      - name: Run Angular lint
+        continue-on-error: true
+        run: |
+           ng add @angular-eslint/schematics --skip-confirmation
+           ng lint
+
+      - name: Run Angular tests and generate HTML report
+        run: |
+          ng test --watch=false --browsers=ChromeHeadless --reporters=progress,html --code-coverage --coverage-reporters=html
+          mkdir -p $GITHUB_WORKSPACE/test-results
+          mv coverage/index.html $GITHUB_WORKSPACE/test-results/test-report.html >> $GITHUB_OUTPUT
