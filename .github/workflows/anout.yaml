@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 18
 
       - name: Install dependencies and Angular CLI
         run: |
@@ -29,6 +29,6 @@ jobs:
 
       - name: Run Angular tests and generate HTML report
         run: |
-          ng test --watch=false --browsers=ChromeHeadless --reporters=progress,html --code-coverage --coverage-reporters=html
+          ng test --watch=false --browsers=ChromeHeadless 
           mkdir -p $GITHUB_WORKSPACE/test-results
           mv coverage/index.html $GITHUB_WORKSPACE/test-results/test-report.html >> $GITHUB_OUTPUT
