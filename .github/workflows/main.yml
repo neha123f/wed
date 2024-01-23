@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies and Angular CLI
         run: |
           npm install
-          npm install -g @angular/cli
+          npm install -g @angular/cli >> $GITHUB_OUTPUT
       - name: Run Angular lint
         continue-on-error: true
         run: |
@@ -28,4 +28,4 @@ jobs:
            ng lint  
       - name: test
         run: |
-          ng test --watch=false --browsers=ChromeHeadless
+          ng test --watch=false --browsers=ChromeHeadless >> $GITHUB_OUTPUT
