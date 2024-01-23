@@ -25,7 +25,7 @@ jobs:
         continue-on-error: true
         run: |
            ng add @angular-eslint/schematics --skip-confirmation
-           ng lint >> $GITHUB_OUTPUT 
+           ng lint  
       - name: test
         run: |
-          ng test --watch=false --browsers=ChromeHeadless >> $GITHUB_OUTPUT
+          ng test --watch=false --browsers=ChromeHeadless 
