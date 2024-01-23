@@ -25,4 +25,4 @@ jobs:
         continue-on-error: true
         run: ng lint  
       - name: test
-        run: ng test --codeCoverage=true
+        run: ng test
