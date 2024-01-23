@@ -23,6 +23,8 @@ jobs:
           npm install -g @angular/cli
       - name: Run Angular lint
         continue-on-error: true
-        run: ng lint  
+        run: |
+           ng add @angular-eslint/schematics
+           ng lint  
       - name: test
         run: ng test
