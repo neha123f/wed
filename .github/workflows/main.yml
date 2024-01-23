@@ -20,12 +20,12 @@ jobs:
       - name: Install dependencies and Angular CLI
         run: |
           npm install
-          npm install -g @angular/cli >> $GITHUB_OUTPUT
+          npm install -g @angular/cli 
       - name: Run Angular lint
         continue-on-error: true
         run: |
            ng add @angular-eslint/schematics --skip-confirmation
-           ng lint  
+           ng lint >> $GITHUB_OUTPUT 
       - name: test
         run: |
           ng test --watch=false --browsers=ChromeHeadless >> $GITHUB_OUTPUT
