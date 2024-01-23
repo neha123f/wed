@@ -28,4 +28,4 @@ jobs:
            ng lint  
       - name: test
         run: |
-          ng test -- --watch=false --browsers=ChromeHeadless
+          ng test --watch=false --browsers=ChromeHeadless
