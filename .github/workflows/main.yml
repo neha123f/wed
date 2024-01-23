@@ -28,5 +28,4 @@ jobs:
            ng lint  
       - name: test
         run: |
-          npm install karma-chrome-launcher --save-dev
           ng test -- --watch=false --browsers=ChromeHeadless
