@@ -43,7 +43,7 @@ jobs:
       - name: Generate HTML Summary
         if: always()
         run: |
-          echo "<html><body><table border='1'><tr><th>Test Results</th></tr><tr><td><pre>" > $GITHUB_WORKSPACE/summary1.html
+          echo "<html><body><table border='1'><tr><th>ng Test Results</th></tr><tr><td><pre>" > $GITHUB_WORKSPACE/summary1.html
           cat $GITHUB_WORKSPACE/testdoc.txt >> $GITHUB_WORKSPACE/summary1.html
           echo "</pre></td></tr></table></body></html>" >> $GITHUB_WORKSPACE/summary1.html
           cat $GITHUB_WORKSPACE/summary1.html >> $GITHUB_STEP_SUMMARY
