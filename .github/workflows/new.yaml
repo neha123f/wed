@@ -23,7 +23,7 @@ jobs:
       - name: Run Angular lint
         continue-on-error: true
         run: |
-            ng lint
+           npx ng lint
            
       - name: test
         run: |
