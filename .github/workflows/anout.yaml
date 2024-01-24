@@ -24,7 +24,6 @@ jobs:
       - name: Run Angular lint
         continue-on-error: true
         run: |
-           ng add @angular-eslint/schematics --skip-confirmation
            ng lint > log.txt 2>&1; echo $?
            cat $GITHUB_WORKSPACE/log.txt | grep -i "linting" >> $GITHUB_WORKSPACE/errors.txt
       - name: Generate HTML Summary
