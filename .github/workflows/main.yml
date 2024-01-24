@@ -25,7 +25,7 @@ jobs:
         continue-on-error: true
         run: |
            ng add @angular-eslint/schematics --skip-confirmation
-           ng lint
+           ng lint:js
            
       - name: test
         run: |
