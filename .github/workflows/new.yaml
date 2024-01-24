@@ -1,0 +1,30 @@
+name: new
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies and Angular CLI
+        run: |
+          npm install
+        
+      - name: Run Angular lint
+        continue-on-error: true
+        run: |
+           ng lint
+           
+      - name: test
+        run: |
+          ng test --watch=false --browsers=ChromeHeadless 
