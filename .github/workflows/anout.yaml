@@ -1,3 +1,4 @@
+
 name: output
 
 on:
@@ -19,17 +20,21 @@ jobs:
       - name: Install dependencies and Angular CLI
         run: |
           npm install
-          npm install -g @angular/cli
-
+          npm install -g @angular/cli 
       - name: Run Angular lint
         continue-on-error: true
         run: |
            ng add @angular-eslint/schematics --skip-confirmation
-           ng lint
-
-      - name: Run Angular tests and generate HTML report
+           ng lint > log.txt 2>&1; echo $?
+           cat $GITHUB_WORKSPACE/log.txt | grep "linting" >> $GITHUB_WORKSPACE/errors.txt
+      - name: Generate HTML Summary
+        if: always()
         run: |
-          npm install karma-html-reporter --save-dev
-          ng test --watch=false --browsers=ChromeHeadless --reporters=progress,html 
-          mkdir -p $GITHUB_WORKSPACE/test-results
-          mv coverage/index.html $GITHUB_WORKSPACE/test-results/test-report.html >> $GITHUB_OUTPUT
+          echo "<html><body><pre>" > $GITHUB_WORKSPACE/summary.html
+          cat $GITHUB_WORKSPACE/errors.txt >> $GITHUB_WORKSPACE/summary.html
+          echo "</pre></body></html>" >> $GITHUB_WORKSPACE/summary.html
+          cat $GITHUB_WORKSPACE/summary.html >> $GITHUB_STEP_SUMMARY
+           
+      - name: test
+        run: |
+          ng test --watch=false --browsers=ChromeHeadless 
