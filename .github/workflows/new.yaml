@@ -23,8 +23,8 @@ jobs:
       - name: Run Angular lint
         continue-on-error: true
         run: |
-            npm run lint
+            ng lint
            
       - name: test
         run: |
-          npm run test --watch=false --browsers=ChromeHeadless 
+          ng test --watch=false --browsers=ChromeHeadless 
