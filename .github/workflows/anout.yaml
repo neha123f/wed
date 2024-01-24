@@ -37,4 +37,8 @@ jobs:
            
       - name: test
         run: |
-          ng test --watch=false --browsers=ChromeHeadless 
+          ng test --watch=false --browsers=ChromeHeadless > tsest_results.txt
+          echo "Test Results:"
+          grep 'Chrome Headless' test_results.txt | while read -r line ; do
+            echo "  $line"
+          done
