@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies and Angular CLI
         run: |
-          npm install
+          npm install --force
           npm install -g @angular/cli 
       - name: Run Angular lint
         continue-on-error: true
