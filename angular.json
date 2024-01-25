@@ -11,7 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-eslint/builder:lint",
+          "builder": "@angular-eslint/schematics",
           "options": {
             "outputPath": "dist/shopify",
             "index": "src/index.html",
